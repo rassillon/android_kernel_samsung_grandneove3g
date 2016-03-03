@@ -152,6 +152,13 @@ config CPU_FREQ_GOV_POWERSAVE
 	  module will be called cpufreq_powersave.
 
 	  If in doubt, say Y.
+	  
+config CPU_FREQ_DEFAULT_GOV_LAZY
+	bool "lazy"
+	select CPU_FREQ_GOV_LAZY
+	select CPU_FREQ_GOV_PERFORMANCE
+        help
+Use the CPUFreq governor 'lazy' as default.
 
 config CPU_FREQ_GOV_USERSPACE
 	tristate "'userspace' governor for userspace frequency scaling"
@@ -329,6 +336,11 @@ config SPARC_US3_CPUFREQ
 	  For details, take a look at <file:Documentation/cpu-freq>.
 
 	  If in doubt, say N.
+	  
+config CPU_FREQ_GOV_LAZY
+ 	tristate "'lazy' cpufreq governor"
+	depends on CPU_FREQ
+	  
 
 config SPARC_US2E_CPUFREQ
 	tristate "UltraSPARC-IIe CPU Frequency driver"
